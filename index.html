@@ -10,6 +10,7 @@
   <title>Bitcoin Point-of-Sale</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <div class="container">
@@ -27,45 +28,50 @@
           </div>
         </form>
       </div>
-      <div id="btc" class="col-md-2 col-md-offset-2">
-        1.1 BTC
+      <div class="col-md-3 col-md-offset-2">
+        <form>
+          <div class="input-group">
+            <input id="btc" type="text" class="form-control text-right" placeholder="" disabled>
+            <span class="input-group-addon">BTC</span>
+          </div>
+        </form>
       </div>
     </div>
 
     <div class="row">
-      <div id="numpad" class="col-md-6">
+      <div id="numpad" class="col-md-5">
 
         <div class="row">
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">1</button>
+            <button class="digit btn btn-default btn-block">1</button>
           </div>
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">2</button>
+            <button class="digit btn btn-default btn-block">2</button>
           </div>
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">3</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <button class="number btn btn-default btn-block">4</button>
-          </div>
-          <div class="col-md-2">
-            <button class="number btn btn-default btn-block">5</button>
-          </div>
-          <div class="col-md-2">
-            <button class="number btn btn-default btn-block">6</button>
+            <button class="digit btn btn-default btn-block">3</button>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">7</button>
+            <button class="digit btn btn-default btn-block">4</button>
           </div>
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">8</button>
+            <button class="digit btn btn-default btn-block">5</button>
           </div>
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">9</button>
+            <button class="digit btn btn-default btn-block">6</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <button class="digit btn btn-default btn-block">7</button>
+          </div>
+          <div class="col-md-2">
+            <button class="digit btn btn-default btn-block">8</button>
+          </div>
+          <div class="col-md-2">
+            <button class="digit btn btn-default btn-block">9</button>
           </div>
         </div>
         <div class="row">
@@ -73,21 +79,32 @@
             <button id="clear" class="btn btn-warning btn-block">clear</button>
           </div>
           <div class="col-md-2">
-            <button class="number btn btn-default btn-block">0</button>
+            <button class="digit btn btn-default btn-block">0</button>
           </div>
           <div class="col-md-2">
             <button id="backspace" class="btn btn-default btn-block"><span class="glyphicon glyphicon-step-backward"></span>&nbsp;</button>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        QR code
-        <div id="qr"></div>
+      <div class="col-md-7">
+        <form>
+          <div class="form-group">
+            <label>Bitcoin address</label>
+            <input id="fiat" type="text" class="form-control" placeholder="Enter you bitcoin address here">
+          </div>
+        </form>
+        
+        <div>
+          <h2>Customer payment code</h2>
+          <div id="qr"></div>
+        </div>
       </div>
     </div>
     <br>
-    <div>
-      <button class="btn btn-primary">Save &amp; Watch</button>
+    <div class="row">   
+      <div id="btc" class="col-md-2 col-md-offset-5">
+        <button class="btn btn-primary">Save &amp; Watch</button>
+      </div>
     </div>
     
     <hr>

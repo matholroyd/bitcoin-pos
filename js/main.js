@@ -19,7 +19,7 @@ $('form input').change(function() {
   updateBtc();
 });
 
-$('#numpad button.number').click(function () {
+$('#numpad button.digit').click(function () {
   var digit = $(this).text();
   var fiat = $('#fiat').val();
   
@@ -56,8 +56,8 @@ $('#backspace').click(function () {
 
 var updateBtc = function() {
   var fiat = $('#fiat').val();
-  output = fiat + " BTC";
-  $('#btc').text(output);
+  var btc = fiat;
+  $('#btc').val(btc);
   updateQR();
 }
 

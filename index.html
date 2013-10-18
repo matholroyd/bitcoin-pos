@@ -23,69 +23,69 @@
         <form>
           <div class="input-group">
             <span class="input-group-addon">$</span>
-            <input type="text" class="form-control text-right" placeholder="enter amount">
+            <input id="fiat" type="text" class="form-control text-right" placeholder="0.00">
           </div>
         </form>
       </div>
-      <div class="col-md-2 col-md-offset-2">
+      <div id="btc" class="col-md-2 col-md-offset-2">
         1.1 BTC
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div id="numpad" class="col-md-6">
 
         <div class="row">
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">1</button>
+            <button class="number btn btn-default btn-block">1</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">2</button>
+            <button class="number btn btn-default btn-block">2</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">3</button>
+            <button class="number btn btn-default btn-block">3</button>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">4</button>
+            <button class="number btn btn-default btn-block">4</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">5</button>
+            <button class="number btn btn-default btn-block">5</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">6</button>
+            <button class="number btn btn-default btn-block">6</button>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">7</button>
+            <button class="number btn btn-default btn-block">7</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">8</button>
+            <button class="number btn btn-default btn-block">8</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">9</button>
+            <button class="number btn btn-default btn-block">9</button>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">0</button>
+            <button id="clear" class="btn btn-warning btn-block">clear</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default btn-block">.</button>
+            <button class="number btn btn-default btn-block">0</button>
           </div>
           <div class="col-md-2">
-            
+            <button id="backspace" class="btn btn-default btn-block"><span class="glyphicon glyphicon-step-backward"></span>&nbsp;</button>
           </div>
         </div>
-                    
       </div>
       <div class="col-md-6">
         QR code
         <div id="qr"></div>
       </div>
     </div>
+    <br>
     <div>
       <button class="btn btn-primary">Save &amp; Watch</button>
     </div>
@@ -98,20 +98,8 @@
   
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="http://d-project.googlecode.com/svn/trunk/misc/qrcode/js/qrcode.js"></script>
-  <script>
-    var create_qrcode = function(text) {
-    	var qr = qrcode(4, 'M');
-    	qr.addData(text);
-    	qr.make();
-    	return qr.createImgTag();
-    };
-
-    var update_qrcode = function() {
-    	var text = document.forms[0].elements['msg'].value.
-    		replace(/^[\s\u3000]+|[\s\u3000]+$/g, '');
-    	document.getElementById('qr').innerHTML = create_qrcode(text);
-    };
-  </script>
+  <script src="js/qrcode.js"></script>
+  <script src="js/big.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

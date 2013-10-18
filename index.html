@@ -66,9 +66,9 @@
             </table>
             <table>
               <tr>
-                <td><button id="clear" class="btn btn-warning btn-block">clear</button></td>
+                <td><button id="clear" class="btn btn-danger btn-block">clear</button></td>
                 <td><button class="digit btn btn-default btn-block">0</button></td>
-                <td><button id="backspace" class="btn btn-default btn-block"><span class="glyphicon glyphicon-step-backward"></span>&nbsp;</button></td>
+                <td><button id="backspace" class="btn btn-warning btn-block"><span class="glyphicon glyphicon-step-backward"></span>&nbsp;</button></td>
               </tr>
             </table>
           </div>
@@ -87,8 +87,21 @@
         </form>
         
         <div>
-          <h2>Customer payment code</h2>
-          <div id="qr"></div>
+          <h2>Payment code</h2>
+          <p>
+            <em id="pay-summary">
+            </em>
+          </p>
+          <div id="qrcode-instructions" class="alert alert-info">
+            To show the QR code, please fill out the:
+            <ul>
+              <li>$ amount</li>
+              <li>Your bitcoin address</li>
+            </ul>
+          </div>
+          
+          <div id="qr">
+          </div>
         </div>
 
         <!-- <div class="row">   

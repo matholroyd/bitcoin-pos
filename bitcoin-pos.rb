@@ -1,8 +1,7 @@
-require 'rubygems'
-require 'sinatra'
-require 'json'
+require 'bundler'
+Bundler.require
+
 require 'open-uri'
-require 'ir_b'
 
 before do
   cache_control :public, :must_revalidate, :max_age => 60

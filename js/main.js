@@ -2,7 +2,7 @@
 Big['RM'] = 0;
 
 var create_qrcode = function(text) {
-	var qr = qrcode(4, 'M');
+	var qr = qrcode(6, 'M');
 	qr.addData(text);
 	qr.make();
 	return qr.createImgTag(4, 0);
@@ -16,6 +16,10 @@ var update_qrcode = function() {
 
 
 $('form input').change(function() {
+  updateBtc();
+});
+
+$('form input').keyup(function() {
   updateBtc();
 });
 
@@ -54,16 +58,22 @@ $('#backspace').click(function () {
   updateBtc();
 });
 
+var btcDecimalPlaces = 5;
+
 var updateBtc = function() {
-  var fiat = $('#fiat').val();
+  var fiat = Big($('#fiat').val());
   var btc = fiat;
-  $('#btc').val(btc);
+  $('#btc').val(btc.toFixed(btcDecimalPlaces));
   updateQR();
 }
 
 var updateQR = function() {
-  var btc = $('#btc').text();
-  var s = "123473985983425:btc=" + btc;
+  var btc = $('#btc').val();
+  var bitcoin_address = $('#bitcoin-address').val();
+
+  var s = "bitcoin:" + bitcoin_address;
+  s += "?amount=" + btc;
+  s += "&message=Code%20" + "jdurxk";
   
   $('#qr').html(create_qrcode(s));
 }

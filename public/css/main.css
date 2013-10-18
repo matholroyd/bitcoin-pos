@@ -9,3 +9,8 @@
 #numpad table td {
   width: 33%;
 }
+
+#numpad table td .btn {
+  height: 50px;
+  font-weight: bold;
+}

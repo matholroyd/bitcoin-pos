@@ -1,6 +1,8 @@
 var f = function() {
   // Make Big round down by default
   Big['RM'] = 0;
+  
+  var btc_to_usd = null;
 
   var create_qrcode = function(text) {
   	var qr = qrcode(6, 'M');
@@ -62,9 +64,13 @@ var f = function() {
   var btcDecimalPlaces = 5;
 
   var updateBtc = function() {
-    var fiat = Big($('#fiat').val());
-    var btc = fiat;
-    $('#btc').val(btc.toFixed(btcDecimalPlaces));
+    var fiat = $('#fiat').val();
+    
+    if(fiat != "" && Big(fiat) > 0) {
+      var btc = Big(fiat).div(Big(btc_to_usd));
+      $('#btc').val(btc.toFixed(btcDecimalPlaces));
+    }
+
     updateQR();
   }
 
@@ -91,4 +97,22 @@ var f = function() {
       $('#qrcode-instructions').show();
     }
   }
+  
+  var setBTCUSD = function() {
+    var tickerUrl = "/bitstamp";
+    
+    jQuery.get(tickerUrl, {}, function(data) {
+      btc_to_usd = data;
+      
+      $('#btcusd').text("1 BTC = $" + btc_to_usd + " USD");
+      updateBtc();
+    });
+  }
+  
+  setBTCUSD();
+  
+  // Update exchange rate every 10 minutes
+  setInterval(function() {
+    setBTCUSD();
+  }, 10 * 60 * 1000);
 }();

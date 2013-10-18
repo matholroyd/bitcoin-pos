@@ -45,11 +45,12 @@ $('#clear').click(function () {
 
 $('#backspace').click(function () {
   var fiat = $('#fiat').val();
+  
   fiat = Big(fiat);
   fiat = fiat.div(Big("10"));
   fiat = Big(fiat.toFixed(2));
-  $('#fiat').val(fiat);
-  
+
+  $('#fiat').val(fiat.toFixed(2));
   updateBtc();
 });
 

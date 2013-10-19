@@ -66,7 +66,7 @@ var f = function() {
   var updateBtc = function() {
     var fiat = $('#fiat').val();
     
-    if(fiat != "" && Big(fiat) > 0) {
+    if(fiat != "") {
       var btc = Big(fiat).div(Big(btc_to_usd));
       $('#btc').val(btc.toFixed(btcDecimalPlaces));
     }

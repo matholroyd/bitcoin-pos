@@ -1,9 +1,20 @@
+header h6 {
+  min-height: 13px;
+}
+
+
 #qr {
   min-height: 170px;
 }
 
 #numpad table {
   width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #numpad table td {

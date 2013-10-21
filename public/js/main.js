@@ -28,19 +28,16 @@ var f = function() {
 
   $('#numpad button.digit').click(function () {
     var digit = $(this).text();
-    var fiat = $('#fiat').val();
+    var fiat = Big($('#fiat').val());
   
-    if(fiat == "") {
-      fiat = Big("0");
-    } else {
-      fiat = Big(fiat);
+    if(fiat > 0) {
       fiat = fiat.times(Big("10"));
+    } else {
+      fiat = Big("0");
     }
   
-    var cents = Big(digit).div(Big("100"));
-  
-    fiat = fiat.plus(cents);
-  
+    fiat = fiat.plus(Big("0.0" + digit));
+                          
     $('#fiat').val(fiat.toFixed(2));
     updateBtc();
   });
@@ -55,7 +52,6 @@ var f = function() {
   
     fiat = Big(fiat);
     fiat = fiat.div(Big("10"));
-    fiat = Big(fiat.toFixed(2));
 
     $('#fiat').val(fiat.toFixed(2));
     updateBtc();
@@ -65,11 +61,15 @@ var f = function() {
 
   var updateBtc = function() {
     var fiat = $('#fiat').val();
+    var btc;
     
     if(fiat != "") {
-      var btc = Big(fiat).div(Big(btc_to_usd));
-      $('#btc').val(btc.toFixed(btcDecimalPlaces));
+      btc = fiat / btc_to_usd;
+    } else {
+      btc = 0
     }
+
+    $('#btc').val(btc.toFixed(4));
 
     updateQR();
   }
@@ -79,7 +79,7 @@ var f = function() {
     var fiat = $('#fiat').val();
     var bitcoin_address = $('#bitcoin-address').val();
   
-    if(btc != "" && Big(btc) > 0 && bitcoin_address != "") {
+    if(btc != "" && parseFloat(btc) > 0 && bitcoin_address != "") {
       var s = "bitcoin:" + bitcoin_address;
       s += "?amount=" + btc;
 

@@ -15,15 +15,22 @@ var f = function() {
   };
 
 
-  $('input#fiat').change(function() {
+  $('input#fiat').change(function(event) {
+    event.stopPropagation(); 
+    event.preventDefault();
     updateBtc();
   });
 
-  $('input#fiat').keyup(function() {
+  $('input#fiat').keyup(function(event) {
+    event.stopPropagation(); 
+    event.preventDefault();
     updateBtc();
   });
 
-  $('#numpad button.digit').click(function () {
+  $('#numpad button.digit').click(function (event) {
+    event.stopPropagation(); 
+    event.preventDefault();
+    
     var digit = $(this).text();
     var fiat = parseFloat($('#fiat').val());
   
@@ -39,12 +46,18 @@ var f = function() {
     updateBtc();
   });
 
-  $('#clear').click(function () {
+  $('#clear').click(function (event) {
+    event.stopPropagation(); 
+    event.preventDefault();
+    
     $('#fiat').val("0.00");
     updateBtc();
   });
 
-  $('#backspace').click(function () {
+  $('#backspace').click(function (event) {
+    event.stopPropagation(); 
+    event.preventDefault();
+    
     var fiat = parseFloat($('#fiat').val());
   
     fiat = Math.floor(fiat * 10) / 100;
@@ -70,11 +83,17 @@ var f = function() {
     updateQR();
   }
   
-  $('input#bitcoin-address').change(function() {
+  $('input#bitcoin-address').change(function(event) {
+    event.stopPropagation(); 
+    event.preventDefault();
+    
     updateQR();
   });
   
-  $('input#bitcoin-address').keyup(function() {
+  $('input#bitcoin-address').keyup(function(event) {
+    event.stopPropagation(); 
+    event.preventDefault();
+    
     updateQR();
   });
   

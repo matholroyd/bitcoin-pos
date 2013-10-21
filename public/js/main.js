@@ -15,11 +15,11 @@ var f = function() {
   };
 
 
-  $('form input').change(function() {
+  $('input#fiat').change(function() {
     updateBtc();
   });
 
-  $('form input').keyup(function() {
+  $('input#fiat').keyup(function() {
     updateBtc();
   });
 
@@ -69,29 +69,40 @@ var f = function() {
 
     updateQR();
   }
+  
+  $('input#bitcoin-address').change(function() {
+    updateQR();
+  });
+  
+  $('input#bitcoin-address').keyup(function() {
+    updateQR();
+  });
+  
 
   var updateQR = function() {
-    var btc = $('#btc').val();
-    var fiat = $('#fiat').val();
-    var bitcoin_address = $('#bitcoin-address').val();
-  
-    if(btc != "" && parseFloat(btc) > 0 && bitcoin_address != "") {
-      var s = "bitcoin:" + bitcoin_address;
-      s += "?amount=" + btc;
+    setTimeout(function () {
+      var btc = $('#btc').val();
+      var fiat = $('#fiat').val();
+      var bitcoin_address = $('#bitcoin-address').val();
 
-      // TODO encourage payer's bitcoin wallet to send a message so payments can be identified
-      // s += "&message=Code%20" + "some-unique-code";
+      if(btc != "" && parseFloat(btc) > 0 && bitcoin_address != "") {
+        var s = "bitcoin:" + bitcoin_address;
+        s += "?amount=" + btc;
 
-      var summary = "Paying $" + fiat + " as " + btc + " BTC to " + bitcoin_address;
+        // TODO encourage payer's bitcoin wallet to send a message so payments can be identified
+        // s += "&message=Code%20" + "some-unique-code";
 
-      $('#qr').html(create_qrcode(s));
-      $('#pay-summary').text(summary); 
-      $('#qrcode-instructions').hide();
-    } else {
-      $('#qr').html("");
-      $('#pay-summary').text(""); 
-      $('#qrcode-instructions').show();
-    }
+        var summary = "Paying $" + fiat + " as " + btc + " BTC to " + bitcoin_address;
+
+        $('#qr').html(create_qrcode(s));
+        $('#pay-summary').text(summary); 
+        $('#qrcode-instructions').hide();
+      } else {
+        $('#qr').html("");
+        $('#pay-summary').text(""); 
+        $('#qrcode-instructions').show();
+      }
+    }, 0);
   }
   
   var setBTCUSD = function() {

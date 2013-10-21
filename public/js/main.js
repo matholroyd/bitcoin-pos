@@ -1,7 +1,4 @@
 var f = function() {
-  // Make Big round down by default
-  Big['RM'] = 0;
-  
   var btc_to_usd = null;
 
   var create_qrcode = function(text) {
@@ -28,15 +25,15 @@ var f = function() {
 
   $('#numpad button.digit').click(function () {
     var digit = $(this).text();
-    var fiat = Big($('#fiat').val());
+    var fiat = parseFloat($('#fiat').val());
   
     if(fiat > 0) {
-      fiat = fiat.times(Big("10"));
+      fiat = fiat * 10;
     } else {
-      fiat = Big("0");
+      fiat = 0;
     }
   
-    fiat = fiat.plus(Big("0.0" + digit));
+    fiat = fiat + parseFloat("0.0" + digit);
                           
     $('#fiat').val(fiat.toFixed(2));
     updateBtc();
@@ -48,10 +45,9 @@ var f = function() {
   });
 
   $('#backspace').click(function () {
-    var fiat = $('#fiat').val();
+    var fiat = parseFloat($('#fiat').val());
   
-    fiat = Big(fiat);
-    fiat = fiat.div(Big("10"));
+    fiat = Math.floor(fiat * 10) / 100;
 
     $('#fiat').val(fiat.toFixed(2));
     updateBtc();
@@ -69,7 +65,7 @@ var f = function() {
       btc = 0
     }
 
-    $('#btc').val(btc.toFixed(4));
+    $('#btc').val(btc.toFixed(btcDecimalPlaces));
 
     updateQR();
   }
